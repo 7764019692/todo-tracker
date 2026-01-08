@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back" slot="start"></ion-icon>
+        Back
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Terms & Conditions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="common-page-header">
+    <ion-icon name="document-text" color="primary"></ion-icon>
+    <h1>Terms and Conditions</h1>
+    <p class="subtitle">Last updated: {{today | date:'fullDate'}}</p>
+  </div>
+
+  <ion-card class="common-card">
+    <ion-card-content>
+      <p><strong>Please read these terms and conditions carefully before using Our Service.</strong></p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="common-card">
+    <ion-card-header>
+      <ion-card-title>1. Interpretation and Definitions</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h4>Interpretation</h4>
+      <p>The words of which the initial letter is capitalized have meanings defined under the following conditions.</p>
+      
+      <h4>Definitions</h4>
+      <p>For the purposes of these Terms and Conditions:</p>
+      <ul>
+        <li><strong>Application</strong> means the software program provided by the Company downloaded by You on any electronic device, named Todo Tracker</li>
+        <li><strong>Service</strong> refers to the Application</li>
+        <li><strong>You</strong> means the individual accessing or using the Service</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="common-card">
+    <ion-card-header>
+      <ion-card-title>2. Acknowledgment</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company.</p>
+      <p>Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="text-center mt-3">
+    <ion-button fill="outline" routerLink="/privacy" class="common-outline-button">
+      <ion-icon name="shield-checkmark" slot="start"></ion-icon>
+      View Privacy Policy
+    </ion-button>
+  </div>
+</ion-content>

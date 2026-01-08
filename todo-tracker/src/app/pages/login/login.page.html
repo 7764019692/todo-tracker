@@ -1,0 +1,169 @@
+<!-- src/app/pages/login/login.component.html -->
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>To Do Tracker</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="login-container">
+    <!-- App Logo/Header -->
+    <div class="common-page-header">
+      <ion-icon name="checkmark-done-circle" color="primary"></ion-icon>
+      <h1>To Do Tracker</h1>
+      <p class="subtitle">Organize your daily tasks efficiently</p>
+    </div>
+
+    <!-- Login Card -->
+    <ion-card class="common-card">
+      <ion-card-header class="text-center">
+        <ion-card-title>SIGN IN</ion-card-title>
+        <ion-card-subtitle>Welcome back to your productivity hub</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form (ngSubmit)="login()" #loginForm="ngForm" class="common-form">
+          <!-- Email Field -->
+          <ion-item>
+            <ion-label position="stacked" color="medium">
+              Email Address <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input 
+              type="email" 
+              [(ngModel)]="credentials.email" 
+              name="email"
+              placeholder="Enter your email"
+              required>
+            </ion-input>
+            <ion-icon name="mail-outline" slot="start"></ion-icon>
+          </ion-item>
+
+          <!-- Password Field -->
+          <ion-item>
+            <ion-label position="stacked" color="medium">
+              Password <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input 
+              type="password" 
+              [(ngModel)]="credentials.password" 
+              name="password"
+              placeholder="Enter your password"
+              required>
+            </ion-input>
+            <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          </ion-item>
+
+          <!-- Remember Me & Forgot Password -->
+          <div class="form-options mb-2">
+            <ion-item lines="none">
+              <ion-checkbox slot="start"></ion-checkbox>
+              <ion-label>Remember me</ion-label>
+            </ion-item>
+            
+            <ion-button 
+              fill="clear" 
+              size="small" 
+              (click)="goToForgotPassword()"
+              class="forgot-password">
+              Forgot Password?
+            </ion-button>
+          </div>
+
+          <!-- Login Button -->
+          <ion-button 
+            type="submit" 
+            expand="block" 
+            size="large"
+            class="common-primary-button"
+            [disabled]="!credentials.email || !credentials.password">
+            <ion-icon name="log-in-outline" slot="start"></ion-icon>
+            SIGN IN
+          </ion-button>
+        </form>
+
+        <!-- Divider -->
+        <div class="divider mt-2 mb-2">
+          <ion-text color="medium">or continue with</ion-text>
+        </div>
+
+        <!-- Social Login Options -->
+        <div class="social-login mb-2">
+          <ion-button expand="block" fill="outline" class="common-outline-button">
+            <ion-icon name="logo-google" slot="start"></ion-icon>
+            GOOGLE
+          </ion-button>
+          
+          <ion-button expand="block" fill="outline" class="common-outline-button">
+            <ion-icon name="logo-facebook" slot="start"></ion-icon>
+            FACEBOOK
+          </ion-button>
+        </div>
+
+        <!-- Sign Up Link -->
+        <div class="signup-section text-center">
+          <ion-text color="medium">
+            Don't have an account?
+          </ion-text>
+          <ion-button 
+            fill="clear" 
+            size="small" 
+            (click)="goToSignup()"
+            class="signup-link ml-1">
+            CREATE ACCOUNT
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Quick Demo Access -->
+    <ion-card class="common-card">
+      <ion-card-header>
+        <ion-card-title size="small">Quick Demo Access</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="demo-text">For testing purposes, use any email and password to login.</p>
+        <ion-button 
+          expand="block" 
+          fill="outline" 
+          size="small"
+          class="common-outline-button"
+          (click)="fillDemoCredentials()">
+          FILL DEMO CREDENTIALS
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<!-- ADD THIS FOOTER SECTION -->
+<<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons class="footer-buttons">
+      <ion-button fill="clear" size="small" routerLink="/about">
+        <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+        About Us
+      </ion-button>
+      
+      <ion-button fill="clear" size="small" routerLink="/contact">
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        Contact
+      </ion-button>
+      
+      <ion-button fill="clear" size="small" routerLink="/terms">
+        <ion-icon name="document-text-outline" slot="start"></ion-icon>
+        Terms
+      </ion-button>
+      
+      <ion-button fill="clear" size="small" routerLink="/privacy">
+        <ion-icon name="shield-checkmark-outline" slot="start"></ion-icon>
+        Privacy
+      </ion-button>
+    </ion-buttons>
+    
+    <div class="footer-text ion-text-center">
+      <ion-text color="medium">
+        <small>&copy; 2024 Todo Tracker App. All rights reserved.</small>
+      </ion-text>
+    </div>
+  </ion-toolbar>
+</ion-footer>

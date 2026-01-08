@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back" slot="start"></ion-icon>
+        Back
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Privacy Policy</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="common-page-header">
+    <ion-icon name="shield-checkmark" color="primary"></ion-icon>
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">Last updated: {{today | date:'fullDate'}}</p>
+  </div>
+
+  <ion-card class="common-card">
+    <ion-card-content>
+      <p><strong>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service.</strong></p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="common-card">
+    <ion-card-header>
+      <ion-card-title>1. Information We Collect</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h4>Personal Data</h4>
+      <p>While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You.</p>
+      
+      <h4>Usage Data</h4>
+      <p>Usage Data is collected automatically when using the Service and may include information such as Your Device's Internet Protocol address, browser type, and pages of our Service that You visit.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="common-card">
+    <ion-card-header>
+      <ion-card-title>2. Use of Your Personal Data</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>The Company may use Personal Data for the following purposes:</p>
+      <ul>
+        <li><strong>To provide and maintain our Service</strong>, including to monitor the usage of our Service.</li>
+        <li><strong>To manage Your Account:</strong> to manage Your registration as a user of the Service.</li>
+        <li><strong>For business transfers:</strong> We may use Your information to evaluate or conduct a merger, or other sale or transfer of some or all of Our assets.</li>
+        <li><strong>For other purposes</strong>: We may use Your information for other purposes, such as data analysis and improving our Service.</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="text-center mt-3">
+    <ion-button fill="outline" routerLink="/contact" class="common-outline-button">
+      <ion-icon name="mail" slot="start"></ion-icon>
+      Contact Us for Privacy Questions
+    </ion-button>
+  </div>
+</ion-content>

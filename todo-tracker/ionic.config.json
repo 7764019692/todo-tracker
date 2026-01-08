@@ -1,0 +1,7 @@
+{
+  "name": "todo-tracker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

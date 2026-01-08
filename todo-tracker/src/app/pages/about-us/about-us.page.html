@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back" slot="start"></ion-icon>
+        Back
+      </ion-button>
+    </ion-buttons>
+    <ion-title>About Us</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="common-page-header">
+    <ion-icon name="checkmark-done-circle" color="primary"></ion-icon>
+    <h1>About Todo Tracker</h1>
+    <p class="subtitle">Simplifying your daily task management</p>
+  </div>
+
+  <ion-card class="common-card">
+    <ion-card-header>
+      <ion-card-title>Our Mission</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>At Todo Tracker, we believe that productivity starts with organization. Our mission is to provide a simple, intuitive, and powerful task management solution that helps individuals and teams achieve their goals efficiently.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="common-card">
+    <ion-card-header>
+      <ion-card-title>What We Offer</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none" class="common-list">
+        <ion-item>
+          <ion-icon name="add-circle" slot="start" color="primary"></ion-icon>
+          <ion-label>
+            <h3>Easy Task Creation</h3>
+            <p>Quickly add and organize your daily tasks</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="checkmark-circle" slot="start" color="success"></ion-icon>
+          <ion-label>
+            <h3>Progress Tracking</h3>
+            <p>Mark tasks as complete and track your progress</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="phone-portrait" slot="start" color="tertiary"></ion-icon>
+          <ion-label>
+            <h3>Mobile-First Design</h3>
+            <p>Access your tasks anywhere, anytime</p>
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="lock-closed" slot="start" color="warning"></ion-icon>
+          <ion-label>
+            <h3>Privacy Focused</h3>
+            <p>Your data stays on your device</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="common-card">
+    <ion-card-header>
+      <ion-card-title>Our Story</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>Founded in 2024, Todo Tracker was born from the need for a simple, no-fuss task management application. We noticed that many productivity apps were becoming overly complex, so we decided to create a solution that focuses on what truly matters: getting things done.</p>
+      <p class="mt-2">Our team of passionate developers continues to improve the application based on user feedback, ensuring that Todo Tracker remains the go-to choice for simple and effective task management.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="text-center mt-3">
+    <ion-button fill="outline" routerLink="/contact" class="common-outline-button">
+      <ion-icon name="mail-outline" slot="start"></ion-icon>
+      Get In Touch
+    </ion-button>
+  </div>
+</ion-content>

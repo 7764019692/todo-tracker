@@ -1,0 +1,257 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/login">
+        <ion-icon name="arrow-back" slot="start"></ion-icon>
+        Back
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Create Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="signup-container">
+    <!-- App Logo/Header -->
+    <div class="app-header ion-text-center ion-margin-bottom">
+      <ion-icon name="checkmark-done-circle" size="large" color="primary"></ion-icon>
+      <h1>Join Todo Tracker</h1>
+      <p class="subtitle">Create your account and start organizing your life</p>
+    </div>
+
+    <!-- Signup Card -->
+    <ion-card class="signup-card">
+      <ion-card-header class="ion-text-center">
+        <ion-card-title>Create Your Account</ion-card-title>
+        <ion-card-subtitle>Fill in your details to get started</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form (ngSubmit)="signup()" #signupForm="ngForm">
+          <!-- Full Name -->
+          <ion-item class="ion-margin-bottom">
+            <ion-label position="stacked" color="medium">
+              Full Name <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input 
+              type="text" 
+              [(ngModel)]="user.name" 
+              name="name"
+              placeholder="Enter your full name"
+              required
+              class="custom-input">
+            </ion-input>
+            <ion-icon name="person" slot="start"></ion-icon>
+          </ion-item>
+
+          <!-- Email Field -->
+          <ion-item class="ion-margin-bottom">
+            <ion-label position="stacked" color="medium">
+              Email Address <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input 
+              type="email" 
+              [(ngModel)]="user.email" 
+              name="email"
+              placeholder="Enter your email"
+              required
+              class="custom-input">
+            </ion-input>
+            <ion-icon name="mail" slot="start"></ion-icon>
+          </ion-item>
+
+          <!-- Password Field -->
+          <ion-item class="ion-margin-bottom">
+            <ion-label position="stacked" color="medium">
+              Password <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input 
+              type="password" 
+              [(ngModel)]="user.password" 
+              name="password"
+              placeholder="Create a strong password"
+              required
+              (ionInput)="checkPasswordStrength()"
+              class="custom-input">
+            </ion-input>
+            <ion-icon name="lock-closed" slot="start"></ion-icon>
+          </ion-item>
+
+          <!-- Password Strength Indicator -->
+          <div *ngIf="user.password" class="password-strength ion-margin-bottom">
+            <div class="strength-bar">
+              <div class="strength-fill" [class]="passwordStrengthClass"></div>
+            </div>
+            <div class="strength-text">
+              <small [class]="passwordStrengthClass">{{passwordStrengthText}}</small>
+            </div>
+          </div>
+
+          <!-- Confirm Password Field -->
+          <ion-item class="ion-margin-bottom">
+            <ion-label position="stacked" color="medium">
+              Confirm Password <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input 
+              type="password" 
+              [(ngModel)]="user.confirmPassword" 
+              name="confirmPassword"
+              placeholder="Confirm your password"
+              required
+              class="custom-input">
+            </ion-input>
+            <ion-icon name="lock-closed" slot="start"></ion-icon>
+          </ion-item>
+
+          <!-- Password Match Indicator -->
+          <div *ngIf="user.confirmPassword" class="password-match ion-margin-bottom">
+            <ion-text [color]="passwordsMatch() ? 'success' : 'danger'">
+              <small>
+                <ion-icon [name]="passwordsMatch() ? 'checkmark-circle' : 'close-circle'"></ion-icon>
+                {{passwordsMatch() ? 'Passwords match' : 'Passwords do not match'}}
+              </small>
+            </ion-text>
+          </div>
+
+          <!-- Terms Agreement -->
+          <ion-item class="ion-margin-bottom" lines="none">
+            <ion-checkbox slot="start" [(ngModel)]="user.agreeToTerms" name="agreeToTerms" required></ion-checkbox>
+            <ion-label class="terms-label">
+              I agree to the <a (click)="openTerms()">Terms & Conditions</a> and <a (click)="openPrivacy()">Privacy Policy</a>
+            </ion-label>
+          </ion-item>
+
+          <!-- Newsletter Subscription -->
+          <ion-item class="ion-margin-bottom" lines="none">
+            <ion-checkbox slot="start" [(ngModel)]="user.subscribeNewsletter" name="subscribeNewsletter"></ion-checkbox>
+            <ion-label>
+              Send me productivity tips and updates
+            </ion-label>
+          </ion-item>
+
+          <!-- Signup Button -->
+          <ion-button 
+            type="submit" 
+            expand="block" 
+            size="large"
+            class="signup-button ion-margin-top"
+            [disabled]="!isFormValid()"
+            [class.button-disabled]="!isFormValid()">
+            <ion-icon name="person-add" slot="start"></ion-icon>
+            Create Account
+          </ion-button>
+
+          <!-- Error Message -->
+          <div *ngIf="errorMessage" class="error-message ion-text-center ion-margin-top">
+            <ion-text color="danger">
+              <small>{{errorMessage}}</small>
+            </ion-text>
+          </div>
+        </form>
+
+        <!-- Divider -->
+        <div class="divider ion-margin-vertical">
+          <ion-text color="medium">or sign up with</ion-text>
+        </div>
+
+        <!-- Social Signup Options -->
+        <div class="social-signup ion-margin-bottom">
+          <ion-button expand="block" fill="outline" class="google-btn" (click)="signupWithGoogle()">
+            <ion-icon name="logo-google" slot="start"></ion-icon>
+            Google
+          </ion-button>
+          
+          <ion-button expand="block" fill="outline" class="facebook-btn" (click)="signupWithFacebook()">
+            <ion-icon name="logo-facebook" slot="start"></ion-icon>
+            Facebook
+          </ion-button>
+
+          <ion-button expand="block" fill="outline" class="github-btn" (click)="signupWithGithub()">
+            <ion-icon name="logo-github" slot="start"></ion-icon>
+            GitHub
+          </ion-button>
+        </div>
+
+        <!-- Login Link -->
+        <div class="login-section ion-text-center">
+          <ion-text color="medium">
+            Already have an account?
+          </ion-text>
+          <ion-button 
+            fill="clear" 
+            size="small" 
+            (click)="goToLogin()"
+            class="login-link">
+            Sign In
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Benefits Section -->
+    <ion-card class="benefits-card">
+      <ion-card-header>
+        <ion-card-title>Why Join Todo Tracker?</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" size-md="6">
+              <ion-item>
+                <ion-icon name="rocket" slot="start" color="primary"></ion-icon>
+                <ion-label>
+                  <h3>Boost Productivity</h3>
+                  <p>Organize tasks and get more done in less time</p>
+                </ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12" size-md="6">
+              <ion-item>
+                <ion-icon name="sync" slot="start" color="success"></ion-icon>
+                <ion-label>
+                  <h3>Sync Across Devices</h3>
+                  <p>Access your tasks anywhere, anytime</p>
+                </ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12" size-md="6">
+              <ion-item>
+                <ion-icon name="shield-checkmark" slot="start" color="warning"></ion-icon>
+                <ion-label>
+                  <h3>Privacy First</h3>
+                  <p>Your data stays secure and private</p>
+                </ion-label>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12" size-md="6">
+              <ion-item>
+                <ion-icon name="star" slot="start" color="tertiary"></ion-icon>
+                <ion-label>
+                  <h3>Free Forever</h3>
+                  <p>Core features always free, no hidden costs</p>
+                </ion-label>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Quick Demo Access -->
+    <ion-card class="demo-card">
+      <ion-card-header>
+        <ion-card-title size="small">Quick Demo Access</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="demo-text">Want to try it out first? Use the demo button to fill sample data and explore features.</p>
+        <ion-button 
+          expand="block" 
+          fill="outline" 
+          size="small"
+          (click)="fillDemoData()">
+          Fill Demo Data
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
